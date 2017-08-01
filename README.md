@@ -78,6 +78,6 @@ COLUMNS (S,E)
 The source is very clear and the macros available are too common you will find them everywhere.
 There might be some exception errors, please correct if you find any. Also, if I missed some interesting ones, please add those to make this collection complete.
 
-Don't forget to [&star;`STAR`](https://github.com/ramdeoshubham/macros)this project if you like it.
+Don't forget to &#9733; [`STAR`](https://github.com/ramdeoshubham/macros)this project if you like it.
 
 Hand picked C Macros with &hearts; love !
