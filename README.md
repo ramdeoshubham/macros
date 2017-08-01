@@ -17,7 +17,6 @@ Just download macros.h from [here](https://github.com/ramdeoshubham/macros/archi
 TRUE
 FALSE
 ```
-Use macro `TRUE` for `1` and `FALSE` for `0`.
 
 ### Numbers
 
