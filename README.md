@@ -4,7 +4,7 @@ This is a collection of commonly used C Macros I found on internet, and as sugge
 
 ### How to use
 
-Just download macros.h and include it to the top.
+Just download macros.h from [here](https://github.com/ramdeoshubham/macros/archive/master.zip) and include it to the top.
 
 ```C
 #include "macro.h"
