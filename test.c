@@ -126,7 +126,7 @@ int main(){
   TRY(0>10, "We already knew its an error\n");
 
 /* ASSERT will return -1 therefore its intentionally placed at the end. */
-  ASSERT(1>2);
+  ASSERT(1>2); 
 
   return 0;
 }
