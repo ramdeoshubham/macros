@@ -370,7 +370,7 @@ The following conventions were followed:
 3. Macros for loops and conditionals should not end with braces so that the user can have the option for single line as well as block style.
 4. A helper macro, which are expanded by some other main macro, usually they are not intended to be used directly. So they should be mentioned with their expansion level as prefix. For example, `PASTE(a,b)` expands into `PASTE2(a,b)` which further expands into `a##b`.
 
->Caught a mistake or want to contribute to this documentation? You can edit this page on [Github](https://github.com/ramdeoshubham/)
+>Caught a mistake or want to improve this documentation? You can edit this page on [Github](https://github.com/ramdeoshubham/macros/tree/gh-pages)
 
 ### Credit
 
