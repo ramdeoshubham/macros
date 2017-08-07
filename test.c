@@ -2,6 +2,6 @@
 #include "macros.h"
 int main(){
 	puts( CAT("Hello, ", "World") );
-	printf("%d", TRUE );
+	printf("working ... %d", TRUE );
 	return 0;
 }
