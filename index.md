@@ -14,6 +14,8 @@ Just download **macros.h** from **[here](https://github.com/ramdeoshubham/macros
 #include "macros.h"
 ```
 
+Note that there is an ASSET macro useful for debugging purpose. To enable it, you need to #define DEBUG before including macros.h.
+
 ### Available macros
 
 #### Boolean
@@ -21,12 +23,13 @@ Just download **macros.h** from **[here](https://github.com/ramdeoshubham/macros
 - TRUE
 - FALSE
 
-> We get `TRUE` as `1` and `FALSE` as `0`.
+We get `TRUE` as `1` and `FALSE` as `0`.
 
 ```C
-while (TRUE) {
-  if( (x > 6) == FALSE ) break;
-}
+  while (TRUE) {
+    if( (x > 5) == FALSE ) break;
+    x++; printf("hi ");
+  }
 ```
 
 #### Operators
@@ -38,36 +41,37 @@ while (TRUE) {
 - EQUALS    
 - IS
 
-> These can be used to perform logical operations more conveniently. Specially, `==` is `EQUALS` and `=` is `IS`. So the age old confusion gets clear here.
+These can be used to perform logical operations more conveniently. Specially, `==` is `EQUALS` and `=` is `IS`. So the age old confusion gets clear here.
 
 ```C
-int x;
-scanf("%d", x);
-if( x EQUALS 0 OR x > 10 AND x NOTEQUALS 15)          
+x = 5;
+if( x EQUALS 0 OR x > 10 AND x NOTEQUALS 15)
 {
   x IS 1;
 }
 else if ( NOT (x > 0) ) {
   x IS 0;
 }
+else x IS 100;
+printf("\n%d\n",x);
 ```
 
 #### Loops
 
 - FORVER
 
-> A simple infinite loop. It needs to be break from the scope to stop it.
+A simple infinite loop. It needs to be break from the scope to stop it.
 
 ```C
 FOREVER{
-  if( x > 10 ) break;
-  x++;
+  if( x > 5 ) break;
+  x++;printf("hi ");
 }
 ```
 
 - RANGE (var, from, to)
 
-> A simple from - to ranged loop.  
+A simple from - to ranged loop.  
 
 ```C
 int i;
@@ -79,7 +83,7 @@ RANGE (i, 10, 20){
    10 11 12 13 14 15 16 17 18 19 20 */
 ```
 
-> It works in both direction way without any modifications required. It will decide on its on when to decrement or increament. Its smart isn't it?
+It works in both direction way without any modifications required. It will decide on its on when to decrement or increament. Its smart isn't it?
 
 ```C
 int i;
@@ -93,7 +97,7 @@ RANGE (i, 5, -5){
 
 - FOREACH (item, array)
 
-> A C implementation of foreach loop, it will traverse each element of array, and can do operations on each element as returned into pointer item variable.
+A C implementation of foreach loop, it will traverse each element of array, and can do operations on each element as returned into pointer item variable.
 
 ```C
 STRING A[] = {"apple", "banana", "orange", "grapes"};
@@ -121,7 +125,7 @@ There are a lot of macros for mathematical purposes.
 - RAD2DEG(x)         
 - DEG2RAD(x)
 
-> These can be used to convert angles, where PI is a constant.
+These can be used to convert angles, where PI is a constant.
 
 ```C
 printf("%d ", RAD2DEG(PI) );
@@ -129,6 +133,8 @@ printf("%d ", RAD2DEG(PI) );
 /* OUTPUT:
    180 */
 ```
+
+Functioning of below Macros are quite obvious. **(TL;DR !)**
 
 - ALIGNB(x, align)    
 - ALIGN(x, align)     
@@ -148,7 +154,7 @@ printf("%d ", RAD2DEG(PI) );
 - IMPLIES(x, y)       
 
 - SWAP(a, b)          
-- SORT(a, b)          
+- SORT(a, b)
 
 - COMPARE(x, y)       
 - SIGN(x)             
@@ -156,6 +162,8 @@ printf("%d ", RAD2DEG(PI) );
 - IS_ODD( num )       
 - IS_EVEN( num )      
 - IS_BETWEEN(n,L,H)   
+
+For example:
 
 ```C
 int x;
@@ -188,11 +196,20 @@ if ( IS_EVEN (x) && IS_BETWEEN(x, 0, 20) ){
 - COLUMNS(S,E)
 - IS_ARRAY(a)   
 
+```C
+int arr[] = {1,2,3,4,5,6,7,8,9,10};
+if(IS_ARRAY(arr)) {
+  SET(arr, ARRAY_SIZE(arr)-4, 10);
+  ZERO(arr, 3);
+}
+RANGE(x, 0, 9) printf("%d\n", arr[x]);
+```
+
 #### Strings
 
 - STRING
 
-> Its translates to char*.
+Its translates to char*.
 
 ```C
 STRING x = "hello";
@@ -201,7 +218,7 @@ STRING list[] = {"book", "ball", "bucket"};
 
 - CAT(str1, str2)
 
-> Concatenation of two pure strings.
+Concatenation of two pure strings.
 
  ```C
  puts ( CAT ("PenPineapple", "ApplePen") );
@@ -212,7 +229,7 @@ STRING list[] = {"book", "ball", "bucket"};
 
 - STR(s)
 
-> Expands s as a string.
+Expands s as a string.
 
 ```C
 puts ( STR (This is a fruit) );
@@ -226,16 +243,45 @@ puts ( STR (This is a fruit) );
 - PASTE(a,b)
 - PRINT_TOKEN(token)
 
+```C
+a = 10;
+b = 20;
+ab = 0;
+x = PASTE(a,b);
+PRINT_TOKEN( x );
+```
+
 #### Debugging
 
 - LOG (x, fmt, ...)
+
+```C
+LOG(x=5,"Now square of x is %d", x*x);
+```
+
 - TRY (x, s)
-- LOGERROR (M, ...)
+
+```C
+TRY(0>10, "We already knew its an error\n");
+```
+
 - ASSERT (n)
+
+```C
+#define DEBUG
+#include "macro.h"
+...
+  ASSERT(1>2);
+...
+```
 
 #### Statements
 
 - STMT(stuff)
+
+```C
+STMT (printf("it should be in a macro...\n"););
+```
 
 #### Saturation
 
@@ -243,37 +289,41 @@ puts ( STR (This is a fruit) );
 - SATDEC(w,L)
 
 ```C
-int x = 3;
-for(int i=0; i<10; i++){
-  SATINC(x,8);
-  printf("%d ");
+a = 0, b = 7;
+for(x=0; x<10; x++){
+  SATINC(a,7);
+  SATDEC(b,0);
+  printf("%d %d, ",a,b);
 }
-
-/* OUTPUT:
-   3 4 5 6 7 8 8 8 8 8 */
 ```
 
 #### Once
 
 - ONCE ( stmts )
 
-> This Macro make it sure that the statements within it are performed only once.
+This Macro make it sure that the statements within it are performed only once.
 
 ```C
-int x;
-RANGE(x,1,10) {
-  ONCE(
-    printf("hello once\n");
-  )
+a = 1;
+RANGE(x,0,10) {
+/*ONCE(*/
+  a++;
+/*);*/
 }
+printf(" %d ", a);
 
+/* With ONCE */
+a = 1;
+RANGE(x,0,10) {
 ONCE(
-  FOREVER printf("hello forever\n");
-)
+  a++;
+);
+}
+printf(" %d ", a);
 
 /* OUTPUT:
-   hello once
-   hello forever */
+   12
+   2 */
 ```
 
 See also `FOREVER` in Loops section.
@@ -283,7 +333,7 @@ See also `FOREVER` in Loops section.
 - EXTERN_C_START
 - EXTERN_C_END
 
-> This macro is for C++ users. To compile a piece of C code in C++ environment, you can use these macros as follows:
+These macros are for C++ users. To compile a piece of C code in C++ environment, you can use these macros as follows:
 
 ```C
 //somecppfile.cpp
@@ -291,7 +341,7 @@ See also `FOREVER` in Loops section.
 // CPP
 EXTERN_C_START
 
-    / *C */
+    /* C */
 
     #include <stdio.h>
     int main(void)
@@ -318,7 +368,7 @@ The following conventions were followed:
 1. All macros are in UPPERCASE.
 2. In case of any Boolean Macro, the `IS_` prefix should be used. For example, `IS_EVEN(x)`. And they should return a 1 or 0 value.
 3. Macros for loops and conditionals should not end with braces so that the user can have the option for single line as well as block style.
-4. A helper macro, which are expanded by some other main macro, usually they are not intended to be used directly. So they should be mentioned with their expansion level as prefix. For example, <code>PASTE(a,b)</code> expands into <code>PASTE2(a,b)</code> which further expands into <code>a##b</code>.
+4. A helper macro, which are expanded by some other main macro, usually they are not intended to be used directly. So they should be mentioned with their expansion level as prefix. For example, `PASTE(a,b)` expands into `PASTE2(a,b)` which further expands into `a##b`.
 
 >Caught a mistake or want to contribute to this documentation? You can edit this page on [Github](https://github.com/ramdeoshubham/)
 
@@ -327,6 +377,6 @@ The following conventions were followed:
 **The real credits goes to all those great C coders who came up with such creative use of C Macros to extend C.**
 I made this collection in honor of The C language and those unknown coders.
 I can only take credit for the efforts I made to collect and bringing it to you.
-A special thanks to Mohit Khatri for designing looks of this site that make this topic look so interesting here.
+A special thanks to **Mohit Khatri** for designing looks of this site that make this topic look so interesting here.
 
 Don't forget to [ &#9733; STAR](https://github.com/ramdeoshubham/macros) this project if you like it.
