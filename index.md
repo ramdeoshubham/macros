@@ -2,11 +2,11 @@
 layout: default
 ---
 
-### Hand picked C Macros!
+## Hand picked C Macros!
 
 This is a collection of commonly used C Macros I found on internet, and as suggested by my friends.
 
-#### How to use
+### How to use
 
 Just download **macros.h** from **[here](https://github.com/ramdeoshubham/macros/archive/master.zip)** and include it to the top.
 
@@ -14,11 +14,11 @@ Just download **macros.h** from **[here](https://github.com/ramdeoshubham/macros
 #include "macros.h"
 ```
 
-Note that there is an ASSET macro useful for debugging purpose. To enable it, you need to #define DEBUG before including macros.h.
+Note that there is an ASSERT macro useful for debugging purpose. To enable it, you need to #define DEBUG before including macros.h.
 
-### Available macros
+## Available macros
 
-#### Boolean
+### Boolean
 
 - TRUE
 - FALSE
@@ -32,7 +32,7 @@ We get `TRUE` as `1` and `FALSE` as `0`.
   }
 ```
 
-#### Operators
+### Operators
 
 - AND       
 - OR        
@@ -56,7 +56,7 @@ else x IS 100;
 printf("\n%d\n",x);
 ```
 
-#### Loops
+### Loops
 
 - FORVER
 
@@ -83,7 +83,7 @@ RANGE (i, 10, 20){
    10 11 12 13 14 15 16 17 18 19 20 */
 ```
 
-It works in both direction way without any modifications required. It will decide on its on when to decrement or increament. Its smart isn't it?
+It works in both direction way without any modifications required. It will decide on its on when to decrement or increment. Its smart isn't it?
 
 ```C
 int i;
@@ -97,7 +97,7 @@ RANGE (i, 5, -5){
 
 - FOREACH (item, array)
 
-A C implementation of foreach loop, it will traverse each element of array, and can do operations on each element as returned into pointer item variable.
+A C implementation of foreach loop, it will go through each element of an array, and will perform operations on each element as returned into pointer item variable.
 
 ```C
 STRING A[] = {"apple", "banana", "orange", "grapes"};
@@ -116,8 +116,7 @@ See also `STRING` in strings section.
 
 Obviously, for single line statements, `{}` are not required.
 
-
-#### Math
+### Math
 
 There are a lot of macros for mathematical purposes.
 
@@ -134,8 +133,6 @@ printf("%d ", RAD2DEG(PI) );
    180 */
 ```
 
-Functioning of below Macros are quite obvious. **(TL;DR !)**
-
 - ALIGNB(x, align)    
 - ALIGN(x, align)     
 - FLOORB(x, align)    
@@ -145,19 +142,39 @@ Functioning of below Macros are quite obvious. **(TL;DR !)**
 - CLIP(x, min, max)   
 - UCLIP(x, max)       
 - LCLIP(x, min)     
-
 - MIN(x, y)          
 - MAX(x, y)          
 - ABS(x)              
-- DIFF(a,b)          
+- DIFF(a,b)
+
+Functioning of above Macros are quite obvious. **(TL;D write!)**          
+
 - ISNAN(x)            
+
+For example, ISNAN (0.0/0.0), It Checks if x is NOT A NUMBER.
+
 - IMPLIES(x, y)       
 
 - SWAP(a, b)          
 - SORT(a, b)
 
+These two are interesting. Also if you look at their #defines, they don't have any temporary variable.
+
+```C
+int x = 10, y = 5, z = 0;
+SORT(x,y); /*now x should be smaller one*/
+SWAP(x,z); /*now z and x swaps */
+printf("%d", z);
+
+/* OUTPUT:
+   5 */
+
+```
+
 - COMPARE(x, y)       
-- SIGN(x)             
+- SIGN(x)        
+
+Returns `1` on positive and `-1` on negative.     
 
 - IS_ODD( num )       
 - IS_EVEN( num )      
@@ -180,7 +197,7 @@ if ( IS_EVEN (x) && IS_BETWEEN(x, 0, 20) ){
 ```
 
 
-#### Bits
+### Bits
 
 - BIT(x)          
 - SETBIT(x,p)     
@@ -188,7 +205,9 @@ if ( IS_EVEN (x) && IS_BETWEEN(x, 0, 20) ){
 - GETBIT(x,p)     
 - TOGGLEBIT(x,p)  
 
-#### Arrays
+People use constant 1024 many times, now you can get it simply by `BIT(10)`.
+
+### Arrays
 
 - ARRAY_SIZE(a)
 - SET(d, n, v)
@@ -202,10 +221,13 @@ if(IS_ARRAY(arr)) {
   SET(arr, ARRAY_SIZE(arr)-4, 10);
   ZERO(arr, 3);
 }
-RANGE(x, 0, 9) printf("%d\n", arr[x]);
+RANGE(x, 0, 9) printf("%d ", arr[x]);
+
+/* OUTPUT:
+0 0 0 10 10 10 7 8 9 10 */
 ```
 
-#### Strings
+### Strings
 
 - STRING
 
@@ -238,7 +260,7 @@ puts ( STR (This is a fruit) );
    This is a fruit */
 ```
 
-#### Tokens
+### Tokens
 
 - PASTE(a,b)
 - PRINT_TOKEN(token)
@@ -249,44 +271,39 @@ b = 20;
 ab = 0;
 x = PASTE(a,b);
 PRINT_TOKEN( x );
+
+/* OUTPUT:
+   x is 0 */
 ```
 
-#### Debugging
+### Debugging
 
 - LOG (x, fmt, ...)
-
-```C
-LOG(x=5,"Now square of x is %d", x*x);
-```
-
 - TRY (x, s)
-
-```C
-TRY(0>10, "We already knew its an error\n");
-```
-
 - ASSERT (n)
 
+ASSERT Macro will require DEBUG to be defined. Also on error, it will return -1 to exit. TRY performs x. Only on error, it shows custom error message. LOG is reverse, it produces message on success of x.
+
 ```C
-#define DEBUG
+#define DEBUG /* To use ASSERT */
 #include "macro.h"
 ...
+  LOG(x=5,"Now square of x is %d", x*x);
+  TRY(0>10, "We already knew its an error\n");
   ASSERT(1>2);
-...
+
+/* OUTPUT:
+   test.c:125: Now square of x is 25
+   test.c:126:We already knew its an error
+   1>2 - Failed On Aug  7 2017 At 22:36:23 In File test.c At Line 12
 ```
 
-#### Statements
-
-- STMT(stuff)
-
-```C
-STMT (printf("it should be in a macro...\n"););
-```
-
-#### Saturation
+### Saturation
 
 - SATINC(v,L)
 - SATDEC(w,L)
+
+A saturating macro which does v++ and w-- respectively on every call, and does nothing on reaching L limit.
 
 ```C
 a = 0, b = 7;
@@ -295,9 +312,20 @@ for(x=0; x<10; x++){
   SATDEC(b,0);
   printf("%d %d, ",a,b);
 }
+
+/* OUTPUT:
+   1 6, 2 5, 3 4, 4 3, 5 2, 6 1, 7 0, 7 0, 7 0, 7 0, */
 ```
 
-#### Once
+### Statements
+
+- STMT(stuff)
+
+Macros involving multiple statements needs braces which are safer to define with a do_while(0) for single execution. STMT expands statements the same way.
+
+```C
+STMT (printf("it should be in a macro...\n"););
+```
 
 - ONCE ( stmts )
 
@@ -310,7 +338,7 @@ RANGE(x,0,10) {
   a++;
 /*);*/
 }
-printf(" %d ", a);
+printf("%d\n", a);
 
 /* With ONCE */
 a = 1;
@@ -319,7 +347,7 @@ ONCE(
   a++;
 );
 }
-printf(" %d ", a);
+printf("%d\n", a);
 
 /* OUTPUT:
    12
@@ -328,7 +356,7 @@ printf(" %d ", a);
 
 See also `FOREVER` in Loops section.
 
-#### Extern C
+### Extern C
 
 - EXTERN_C_START
 - EXTERN_C_END
@@ -359,7 +387,7 @@ EXTERN_C_END
 
 As 'new' is a C++ keyword, this would never be compiled with a C++ compiler, but its valid in C. So we used those macros to mix C in C++.
 
-### Contribute
+## Contribute
 
 Macros are usually insulted for their dirty behavior. But we can see that some features of C language cannot be used to their max without macros. A good Macro is : Portable, safe, involves as less arbitrary variables as possible. Although I am trying my best, there might be some exception errors, please correct if you find any. Also, if I missed some other interesting macros, please contribute to make this collection complete and more usable.
 
@@ -370,9 +398,9 @@ The following conventions were followed:
 3. Macros for loops and conditionals should not end with braces so that the user can have the option for single line as well as block style.
 4. A helper macro, which are expanded by some other main macro, usually they are not intended to be used directly. So they should be mentioned with their expansion level as prefix. For example, `PASTE(a,b)` expands into `PASTE2(a,b)` which further expands into `a##b`.
 
->Caught a mistake or want to improve this documentation? You can edit this page on [Github](https://github.com/ramdeoshubham/macros/tree/gh-pages)
+>Caught a mistake or want to contribute to this documentation? You can edit this page on [Github](https://github.com/ramdeoshubham/)
 
-### Credit
+## Credit
 
 **The real credits goes to all those great C coders who came up with such creative use of C Macros to extend C.**
 I made this collection in honor of The C language and those unknown coders.
