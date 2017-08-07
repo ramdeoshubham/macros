@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>macros.h | Useful C Macros</title>
+
+	<meta name="description" content="macros.h is a collection of commonly used useful C macros to extend functionality of C.">
+
+	<link rel="canonical" href="http://ramdeoshubham.com/macros">
+	<meta name="keywords" content="c,cpp,programming,macro,#define,preprocessor">
+	<meta name="author" content="Shubham Ramdeo">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@ramdeoshubham">
+	<meta name="twitter:creator" content="@ramdeoshubham">
+	<meta name="twitter:title" content="macros.h | Useful C macros">
+	<meta name="twitter:description" content="macros.h is a collection of commonly used useful C macros to extend functionality of C.">
+	<meta name="twitter:image" content="http://ramdeoshubham.com/macros/fav/banner.png">
+
+	<meta property="fb:app_id" content="713186875555203">
+	<meta property="og:url" content="http://ramdeoshubham.com/macros">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="macros.h | Useful C macros">
+	<meta property="og:image" content="http://ramdeoshubham.com/macros/fav/banner.png">
+	<meta property="og:image:type" content="image/png">
+	<meta property="og:image:width" content="630">
+	<meta property="og:image:height" content="630">
+	<meta property="og:description" content="macros.h is a collection of commonly used useful C macros to extend functionality of C.">
+
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://ramdeoshubham.com/macros/fav/apple-touch-icon-57x57.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://ramdeoshubham.com/macros/fav/apple-touch-icon-114x114.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://ramdeoshubham.com/macros/fav/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://ramdeoshubham.com/macros/fav/apple-touch-icon-144x144.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="60x60" href="http://ramdeoshubham.com/macros/fav/apple-touch-icon-60x60.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://ramdeoshubham.com/macros/fav/apple-touch-icon-120x120.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://ramdeoshubham.com/macros/fav/apple-touch-icon-76x76.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://ramdeoshubham.com/macros/fav/apple-touch-icon-152x152.png" />
+		<link rel="icon" type="image/png" href="http://ramdeoshubham.com/macros/fav/favicon-196x196.png" sizes="196x196" />
+		<link rel="icon" type="image/png" href="http://ramdeoshubham.com/macros/fav/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/png" href="http://ramdeoshubham.com/macros/fav/favicon-32x32.png" sizes="32x32" />
+		<link rel="icon" type="image/png" href="http://ramdeoshubham.com/macros/fav/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="http://ramdeoshubham.com/macros/fav/favicon-128.png" sizes="128x128" />
+		<meta name="application-name" content="macros.h | Useful C macros"/>
+		<meta name="msapplication-TileColor" content="#FFFFFF" />
+		<meta name="msapplication-TileImage" content="http://ramdeoshubham.com/macros/fav/mstile-144x144.png" />
+		<meta name="msapplication-square70x70logo" content="http://ramdeoshubham.com/macros/fav/mstile-70x70.png" />
+		<meta name="msapplication-square150x150logo" content="http://ramdeoshubham.com/macros/fav/mstile-150x150.png" />
+		<meta name="msapplication-wide310x150logo" content="http://ramdeoshubham.com/macros/fav/mstile-310x150.png" />
+		<meta name="msapplication-square310x310logo" content="http://ramdeoshubham.com/macros/fav/mstile-310x310.png" />
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="theme-color" content="#157878">
+	<link rel="stylesheet" type="text/css" href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+<style>
+body{font-family:"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif}
+.page-header{color:#fff;text-align:center;background-color:#159957;background-image:linear-gradient(-120deg, #155799, #159957)}
+p{text-align: justify;}
+blockquote{border-color: #159957}
+h3{color:#159957}
+h3::before{content: '#'; }
+li {font-family: monospace;font-size:1.6rem;font-weight:bold;color:#159957}
+pre code {border: 1px solid #159957;}
+</style>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104087206-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body>
+<div class="_success jumbo page-header">
+	<div class=jumbo>
+	<h1>macros</h1>
+	<p class="_alignCenter">A collection of commonly used C macros</p>
+	<button class="_white" style="border-color:#000 !important; border-width:2px !important" ><i class="fa fa-github"></i> view on github</button>
+	<br><button class="_white"><i class="fa fa-star"></i> STAR</button>
+	<button class="_info"><i class="fa fa-twitter" style="color:white"></i> TWEET</button>
+</div></div>
+<div style="border-top:3px solid #000;"></div>
+<div class="jumbo"></div>
+
+<div class="container">
+{{ content }}
+</div>
+
+<div class="jumbo"></div>
+<div style="border-top:3px solid #159957;"></div>
+<div class="_dark  jumbo"><i class="fa fa-pencil"></i> with <i class="fa fa-heart"></i><br>
+&copy; Shubham Ramdeo<br>
+</div>
+
+</body>
+</html>
