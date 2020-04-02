@@ -26,6 +26,15 @@
 #define EQUALS    ==
 #define IS        =
 
+/* TYPES */
+
+#define INT16  short
+#define UINT16 unsigned short
+#define INT32  int
+#define UINT32 unsigned int
+#define INT64  long long
+#define UINT64 unsigned long long
+
 /* Loops */
 
 #define FOREVER       for(;;)
