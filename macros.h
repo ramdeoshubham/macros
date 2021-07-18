@@ -150,4 +150,11 @@
 #   define EXTERN_C_END
 #endif
 
+/* User ID */
+#define EFFECTIVE_USER_ID geteuid()
+#define USER_ID getuid()
+
+/* Exit program */
+#define DIE exit(0)
+ 
 #endif /* MACROS_H */
