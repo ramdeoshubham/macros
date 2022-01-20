@@ -157,4 +157,10 @@
 /* Exit program */
 #define DIE exit(0)
  
+/* other contributions from Github users */
+
+#define CONSTRAIN(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
+/* https://github.com/ramdeoshubham/macros/issues/4 */
+
+
 #endif /* MACROS_H */
