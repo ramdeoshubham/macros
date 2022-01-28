@@ -66,7 +66,7 @@ printf("\n%d\n",x);
 
 ### Loops
 
-- FORVER
+- FOREVER
 
 A simple infinite loop. It needs to be break from the scope to stop it.
 
