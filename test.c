@@ -14,6 +14,7 @@
 
 
 #include <stdio.h>
+#include <time.h>
 
 /* For ASSERT macro to work */
 #define DEBUG
@@ -23,7 +24,7 @@
 /* If you compile this file with a C++ compiler, this will make it work*/
 EXTERN_C_START
 
-int main(){
+MAIN () {
 
   int x = 0, a, b, ab;
 
@@ -124,6 +125,14 @@ int main(){
   LOG(x=5,"Now square of x is %d", x*x);
 
   TRY(0>10, "We already knew its an error\n");
+
+  /* DEFER */
+  DEFER(printf("Before DEFER. Already inside. ["), printf("] After DEFER. Still inside.\n")) {
+    printf("] Inside DEFER. [");
+  }
+
+  /* NOW */
+  printf("UNIX epoch: %lu\n", NOW);
 
 /* ASSERT will return -1 therefore its intentionally placed at the end. */
   ASSERT(1>2); 

@@ -109,21 +109,23 @@
 
 /* DEBUGGING */
 
-#define LOG(x, fmt, ...)    if(x){printf("%s:%d: " fmt "\n",\
+#define LOG(x, fmt, ...)    if(x){printf("%s@%d: " fmt "\n",\
                             __FILE__, __LINE__,__VA_ARGS__);}
-#define TRY(x,s)            if(!(x)){printf("%s:%d:%s",__FILE__, __LINE__,s);}
+#define TRY(x,s)            if(!(x)){printf("%s@%d: %s",__FILE__, __LINE__,s);}
 /*you have to  #define DEBUG to enable ASSERT*/
 #ifndef DEBUG
 #define ASSERT(n)
 #else
-#define ASSERT(n)           if(!(n)) { \
-                            printf("%s - Failed ",#n); \
-                            printf("On %s ",__DATE__); \
-                            printf("At %s ",__TIME__); \
-                            printf("In File %s ",__FILE__); \
-                            printf("At Line %d\n",__LINE__); \
-                            return(-1);}
+#define ASSERT(n)           if(!(n)){\
+    printf(__FILE__ "@%d: `" #n "` - Failed | Compilation: " __DATE__ " " __TIME__ "\n", __LINE__);\
+    return(-1);}
 #endif
+
+/* DEFER, useful to init and clean a block of scoped code */
+/* Please see https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2895.htm for a more in depth guide explaining non-standard cleanup functions */
+
+#define DEFER2(head, tail, i)   for(int i=(head,0);!i;tail,i++)
+#define DEFER(head, tail)       DEFER2(head, tail, __deferVar__##__COUNTER__)
 
 /* STMT, useful for creating multiple statements macros */
 
@@ -135,10 +137,10 @@
 #define SATDEC(w,L) (w = (((w) == (L)) ? (w) : ((w) - 1)) )
 
 /* ONCE */
-#define ONCE2(stmts, onceVar)	      {static int onceVar = 1;\
-		                                if(onceVar){stmts\
-			                              onceVar = 0;}}
-#define ONCE(stmts)                 ONCE2(stmts, __onceVar__##__COUNTER__)
+#define ONCE2(stmts, i)     {static int i = 1;\
+		                        if(i){stmts\
+			                      i = 0;}}
+#define ONCE(stmts)         ONCE2(stmts, __onceVar__##__COUNTER__)
 
 /* C in C++ Environment */
 
@@ -162,5 +164,10 @@
 #define CONSTRAIN(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
 /* https://github.com/ramdeoshubham/macros/issues/4 */
 
+
+/* Functions shorthands useful for code tidiness */
+
+#define MAIN()  int main (int argc, const char **argv)
+#define NOW     time(NULL)
 
 #endif /* MACROS_H */
