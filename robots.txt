@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /404.html
+Allow: /
+
+Sitemap: https://ramdeoshubham.github.io/sitemap.xml
