@@ -1,4 +1,9 @@
 # Makefile for GNU make
 
-all: 
-	gcc -ansi -std=c99 -pedantic -c test.c -o test.out
+CC = gcc
+
+all: build-test
+
+# do not use C89, see https://stackoverflow.com/a/2855148/9373031
+build-%:
+	$(CC) -ansi -std=c99 $*.c -o $*.out

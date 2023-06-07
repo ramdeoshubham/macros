@@ -301,9 +301,8 @@ ASSERT Macro will require DEBUG to be defined. Also on error, it will return -1 
   ASSERT(1>2);
 
 /* OUTPUT:
-   test.c:125: Now square of x is 25
-   test.c:126:We already knew its an error
-   1>2 - Failed On Aug  7 2017 At 22:36:23 In File test.c At Line 12
+   test.c@125: Now square of x is 25
+   test.c@127: We already knew its an errortest.c@138: `1>2` - Failed | Compilation: Jun 14 2022 10:20:12
 ```
 
 ### Saturation
@@ -364,6 +363,17 @@ printf("%d\n", a);
 
 See also `FOREVER` in Loops section.
 
+- DEFER
+
+Run an init and a cleanup statement. The init, cleanup and block statements are all under the same scope. One line statements are fine without braces.
+
+```
+/* DEFER */
+DEFER(FILE *f = fopen("file.txt", "w+"), fclose(f)) {
+    fprintf(f, "I love %s!\n", "coffee");
+}
+```
+
 ### Extern C
 
 - EXTERN_C_START
@@ -394,6 +404,16 @@ EXTERN_C_END
 ```
 
 As 'new' is a C++ keyword, this would never be compiled with a C++ compiler, but its valid in C. So we used those macros to mix C in C++.
+
+### Functions shorthands
+
+- MAIN()
+
+A shorthand for `int main (int argc, const char **argv)`
+
+- NOW()
+
+A shorthand `time(NULL)`. Please do note that `#include <time.h>` is required for the time related types.
 
 ## Contribute
 
