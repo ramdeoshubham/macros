@@ -1,18 +1,19 @@
 ---
 layout: default
 ---
-
+ <!--
 <p align="center">
 <h1 align="center" style="font-color:white"><img src="https://raw.githubusercontent.com/ramdeoshubham/macros/gh-pages/fav/favicon-96x96.png"><br>#macros.h</h1><p align="center">Useful C #macros<br>
-    <!--a href="http://ramdeoshubham.com/macros"><strong>Visit macros &raquo;</strong></a></p-->
+   a href="http://ramdeoshubham.com/macros"><strong>Visit macros &raquo;</strong></a></p
 </p>
 
 <!--#[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 #[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 #[![Build Status](https://travis-ci.org/ramdeoshubham/macros.svg?branch=master)](https://travis-ci.org/ramdeoshubham/macros)
 #[![Codacy Badge](https://api.codacy.com/project/badge/Grade/93283a93f08e4fbc951b9629af11ae9f)](https://www.codacy.com/app/ramdeoshubham/macros?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ramdeoshubham/macros&amp;utm_campaign=Badge_Grade)
--->
+
 This is a collection of commonly used C Macros I found on internet, and as suggested by my friends.
+-->
 
 ## Why this is awesome
 
