@@ -1,5 +1,9 @@
+---
+layout: default
+---
+
 <p align="center">
-<h1 align="center"><img src="https://raw.githubusercontent.com/ramdeoshubham/macros/gh-pages/fav/favicon-96x96.png"><br>#macros.h</h1><p align="center">Useful C #macros<br>
+<h1 align="center" style="font-color:white"><img src="https://raw.githubusercontent.com/ramdeoshubham/macros/gh-pages/fav/favicon-96x96.png"><br>#macros.h</h1><p align="center">Useful C #macros<br>
     <!--a href="http://ramdeoshubham.com/macros"><strong>Visit macros &raquo;</strong></a></p-->
 </p>
 
